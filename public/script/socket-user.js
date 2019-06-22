@@ -36,11 +36,9 @@ $(function() {
 
         // emit event: user joined 
         socket.emit('add user', $('#username').val().trim());
-
-        // show playground button
-        $('#playground-container').show();        
-        // show current online user
-        $('#users-online').show();
+        
+        // show action field
+        $('.action-container').css('display', 'flex');        
         // hide input field
         $('#name-input-container').hide();
         // clear the input value

@@ -1,3 +1,13 @@
+#playground-container {
+    height: 200px;
+    width: 200px;    
+}
+
+#btn-playground {
+    text-decoration: none;
+    color: #f3f3f3;
+}
+
 .button-wrapper{
     width:100vw;
     height:100vh;
@@ -14,8 +24,7 @@
     font-size:2rem;
     box-sizing:border-box;
 }
-.my-super-cool-btn span{
-    position:relative;
+.my-super-cool-btn span{    
     box-sizing:border-box;
     display:flex;
     align-items:center;
