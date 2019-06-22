@@ -6,6 +6,7 @@
 #btn-playground {
     text-decoration: none;
     color: #f3f3f3;
+    display: none;
 }
 
 .button-wrapper{

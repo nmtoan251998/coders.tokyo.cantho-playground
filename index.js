@@ -3,12 +3,18 @@ var app = express();
 var http = require('http').createServer(app);
 var io = require('socket.io')(http);
 
-users = [];
+let users = [];
+let clickedUsers = [];
+let timer = 3;
 
 app.use(express.static('public'));
 
 app.get('/', function(req, res) {
     res.sendFile(__dirname + '/user.html');
+});
+
+app.get('/admin', function(req, res) {
+    res.sendFile(__dirname + '/admin.html');
 });
 
 io.on('connect', function(socket) {   
@@ -28,6 +34,22 @@ io.on('connect', function(socket) {
             1);
         updateUser('user left', users);
     });
+
+    socket.on('click', function(username) {
+        clickedUsers.push(username);
+
+        io.emit('winner', clickedUsers);
+    });
+
+    socket.on('start', function() {
+        io.emit('start', timer);
+    })
+
+    socket.on('restart', function() {
+        clickedUsers.length = 0;
+
+        io.emit('restart', clickedUsers);
+    })
 
     function updateUser(eventname, users) {
         io.emit(eventname, users);
